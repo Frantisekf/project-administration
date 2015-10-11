@@ -1,4 +1,4 @@
-package cz.vutbr.feec.farkas.core.controller;
+package cz.vutbr.feec.farkas.controllers;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ public class MainController {
     @RequestMapping("/hello")
     public ModelAndView showMessage(
             @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-        System.out.println("in controller");
+        System.out.println("in controllers");
 
         ModelAndView mv = new ModelAndView("homepage");
         mv.addObject("message", message);
