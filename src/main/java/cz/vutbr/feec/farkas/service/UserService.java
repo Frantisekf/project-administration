@@ -2,15 +2,25 @@ package cz.vutbr.feec.farkas.service;
 
 import cz.vutbr.feec.farkas.model.User;
 
+import java.util.List;
+
 /**
  * Created by frantisek on 8.11.15.
  */
 public interface UserService {
-    //git test
-    User save(User user);
 
-    boolean findByLogin(String userName, String password);
+    User create(User user);
 
-    boolean findByUserName(String userName);
+    void delete(String id);
+
+    List<User> findAll();
+
+    User findById(String id);
+
+    User update(User user);
+
+    User findByUserNameAndPassword(String userName, String password);
+
+    User findByUserName(String userName);
 }
 

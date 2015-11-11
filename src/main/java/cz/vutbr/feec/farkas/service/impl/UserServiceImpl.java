@@ -3,42 +3,53 @@ package cz.vutbr.feec.farkas.service.impl;
 import cz.vutbr.feec.farkas.model.User;
 import cz.vutbr.feec.farkas.repository.UserRepository;
 import cz.vutbr.feec.farkas.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import javax.inject.Inject;
+import java.util.List;
 
 /**
  * Created by frantisek on 8.11.15.
  */
 @Service("userService")
 public class UserServiceImpl implements UserService {
-    //git test
-    @Autowired
+
+    @Inject
     private UserRepository userRepository;
 
-    @Transactional
-    public User save(User user) {
+    @Override
+    public User create(User user) {
         return userRepository.save(user);
     }
 
-    public boolean findByLogin(String userName, String password) {
-        User user = userRepository.findByUserName(userName);
-
-        if (user != null && user.getPassword().equals(password)) {
-            return true;
-        }
-
-        return false;
+    @Override
+    public void delete(String id) {
+        userRepository.delete(id);
     }
 
-    public boolean findByUserName(String userName) {
-        User user = userRepository.findByUserName(userName);
+    @Override
+    public List<User> findAll() {
+        return (List<User>) userRepository.findAll();
+    }
 
-        if (user != null) {
-            return true;
-        }
+    @Override
+    public User findById(String id) {
+        return userRepository.findOne(id);
+    }
 
-        return false;
+    @Override
+    public User update(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User findByUserNameAndPassword(String userName, String password) {
+        return userRepository.findByUserNameAndPassword(userName, password);
+    }
+
+    @Override
+    public User findByUserName(String userName) {
+        return userRepository.findByUserName(userName);
     }
 }
 

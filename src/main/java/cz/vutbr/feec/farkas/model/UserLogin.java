@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
  * Created by frantisek on 8.11.15.
  */
 public class UserLogin {
-    //git test
+
     @NotEmpty
     @Size(min = 4, max = 20)
     private String userName;
